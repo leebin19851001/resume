@@ -1,10 +1,14 @@
-import axios from '../service/axios.js'
+import axios from '../service/axios'
 const api = {
-  searcyUserInfoById (userId) {
-    return axios.get('/searcyUserInfoById?userId=' + userId)
+  queryUserInfoByUserId (params) {
+    return axios.get('/queryUserInfoByUserId', { params: {
+      ...params
+    } })
   },
-  registerUser (userId, password) {
-    return axios.get('/register?userId=' + userId + '&password=' + password)
+  registerUser (params) {
+    return axios.get('/register', { params: {
+      ...params
+    } })
   }
 }
 

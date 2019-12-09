@@ -8,30 +8,43 @@
     <div class="register-right">
       <p>立即注册</p>
       <p>用户名</p>
-      <p><input type="text" name="" id=""></p>
+      <p><input type="text" v-model="userId"></p>
       <p>邮箱</p>
-      <p><input type="text" name="" id=""></p>
+      <p><input type="email" v-model="email"></p>
       <p>密码</p>
-      <p><input type="text" name="" id=""></p>
-      <p>注册</p>
+      <p><input type="password" v-model="password"></p>
+      <p @click="login">注册</p>
     </div>
   </div>
 </template>
 <script>
-import api from '../api'
+import api from '../api/index'
 export default {
   data () {
     return {
-      name: ''
+      userId: '',
+      email: '',
+      password: ''
     }
   },
+  mounted () {
+    this.getData()
+  },
   methods: {
-    login () {
-      api.registerUser('444', '1')
+    getData () {
+      api.queryUserInfoByUserId({ userId: 'zhagnsan' })
         .then(res => {
           console.log(res)
         }, reason => {
-          console.log(reason)
+          console.log('22222222')
+        })
+    },
+    login () {
+      api.registerUser({ userId: this.userId, email: this.email, password: this.password })
+        .then(res => {
+          console.log('1111111')
+        }, reason => {
+          console.log('22222222')
         })
     }
   }
@@ -44,12 +57,14 @@ export default {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    padding: 50px 300px;
+    padding: 80px 500px;
     display: flex;
     .register-left {
       position: relative;
       width: 40%;
+      height: 600px;
       background-image: url('../assets/img/bg.jpg');
+      background-repeat: no-repeat;
       text-align: center;
       p {
         position: relative;
@@ -70,11 +85,14 @@ export default {
         border-radius: 10px;
         border:2px solid snow;
         padding: 2px;
+        font-weight: 700;
+        cursor: pointer;
       }
     }
     .register-right {
       position: relative;
       width: 60%;
+      height: 600px;
       box-sizing: border-box;
       border-top:1px solid black;
       border-bottom:1px solid black;
@@ -114,6 +132,7 @@ export default {
         background: rgb(211, 176, 122);
         border-radius: 10px;
         font-weight: 700;
+        cursor: pointer;
       }
     }
   }
