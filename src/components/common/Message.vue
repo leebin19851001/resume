@@ -1,17 +1,24 @@
 <template>
   <div class="message">
-    <h1>消息提示</h1>
+    {{msg}}
   </div>
 </template>
 
+<script>
+export default {
+  props: ['msg']
+}
+</script>
+
 <style lang="scss" scoped>
   .message {
-    position:fixed;
-    width: 100%;
-    top: 1px;
+    height: 30px;
+    width: 200px;
+    background: rgba($color: #1474c2f6, $alpha: 0.9);
+    color: #fff;
+    line-height: 30px;
+    padding: 0 20px;
+    border-radius: 5px;
     margin: 0 auto;
-    h1 {
-      color: #000;
-    }
   }
 </style>

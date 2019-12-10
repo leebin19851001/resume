@@ -1,20 +1,24 @@
 <template>
-  <div class="register">
-    <Message />
-    <div class="register-left">
-      <p>已有账号？</p>
-      <p>有账号就登录吧，好久不见</p>
-      <p>登录</p>
-    </div>
-    <div class="register-right">
-      <p>立即注册</p>
-      <p>用户名</p>
-      <p><input type="text" v-model="userName"></p>
-      <p>邮箱</p>
-      <p><input type="email" v-model="email"></p>
-      <p>密码</p>
-      <p><input type="password" v-model="password"></p>
-      <p @click="login">注册</p>
+    <div>
+      <div class="msg-container" v-show="isShow">
+        <Message :msg="showMsg"/>
+      </div>
+      <div class="register">
+        <div class="register-left">
+          <p>已有账号？</p>
+          <p>有账号就登录吧，好久不见</p>
+          <p>登录</p>
+        </div>
+        <div class="register-right">
+          <p>立即注册</p>
+          <p>用户名</p>
+          <p><input type="text" v-model="userName"></p>
+          <p>邮箱</p>
+          <p><input type="email" v-model="email"></p>
+          <p>密码</p>
+          <p><input type="password" v-model="password"></p>
+          <p @click="rigster">注册</p>
+        </div>
     </div>
   </div>
 </template>
@@ -30,7 +34,9 @@ export default {
     return {
       userName: '',
       email: '',
-      password: ''
+      password: '',
+      isShow: false,
+      showMsg: ''
     }
   },
   methods: {
@@ -44,12 +50,20 @@ export default {
           console.log(reason)
         })
     },
-    login () {
+    rigster () {
       api.registerUser({ userName: this.userName, email: this.email, password: md5.hex_md5(this.password) })
         .then(res => {
-          console.log(res)
+          this.isShow = true
+          this.showMsg = res.data.msg
+          setTimeout(() => {
+            this.isShow = false
+          }, 3000)
         }, reason => {
-          console.log(reason)
+          this.isShow = true
+          this.showMsg = reason.data.msg
+          setTimeout(() => {
+            this.isShow = false
+          }, 3000)
         })
     }
   }
@@ -57,6 +71,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .msg-container {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+  }
   .register {
     position: relative;
     box-sizing: border-box;
