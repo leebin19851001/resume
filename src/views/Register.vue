@@ -1,5 +1,6 @@
 <template>
   <div class="register">
+    <Message />
     <div class="register-left">
       <p>已有账号？</p>
       <p>有账号就登录吧，好久不见</p>
@@ -8,7 +9,7 @@
     <div class="register-right">
       <p>立即注册</p>
       <p>用户名</p>
-      <p><input type="text" v-model="userId"></p>
+      <p><input type="text" v-model="userName"></p>
       <p>邮箱</p>
       <p><input type="email" v-model="email"></p>
       <p>密码</p>
@@ -19,32 +20,36 @@
 </template>
 <script>
 import api from '../api/index'
+import md5 from '../utils/md5'
+import Message from '../components/common/Message'
 export default {
+  components: {
+    Message
+  },
   data () {
     return {
-      userId: '',
+      userName: '',
       email: '',
       password: ''
     }
-  },
-  mounted () {
-    this.getData()
   },
   methods: {
     getData () {
       api.queryUserInfoByUserId({ userId: 'zhagnsan' })
         .then(res => {
-          console.log(res)
+          this.userName = res.data.data[0]['user_name']
+          this.email = res.data.data[0]['email']
+          this.password = res.data.data[0]['password']
         }, reason => {
-          console.log('22222222')
+          console.log(reason)
         })
     },
     login () {
-      api.registerUser({ userId: this.userId, email: this.email, password: this.password })
+      api.registerUser({ userName: this.userName, email: this.email, password: md5.hex_md5(this.password) })
         .then(res => {
-          console.log('1111111')
+          console.log(res)
         }, reason => {
-          console.log('22222222')
+          console.log(reason)
         })
     }
   }
