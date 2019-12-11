@@ -1,14 +1,29 @@
 <template>
-  <ul class="container">
-    <li v-for="(item, index) in list" :key="index">
+  <div class="container">
+    <li v-for="(item, index) in list" :key="index" v-show="index === showImgIndex">
       <img :src="item.src" mode="scaleToFill" lazy-load="false" />
     </li>
-  </ul>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['list']
+  props: ['list', 'len'],
+  data () {
+    return {
+      showImgIndex: 0
+    }
+  },
+  mounted () {
+    let len = this.len
+    setInterval(() => {
+      if (this.showImgIndex === len - 1) {
+        this.showImgIndex = -1
+      }
+      this.showImgIndex++
+      console.log(this.showImgIndex)
+    }, 2000)
+  }
 }
 </script>
 

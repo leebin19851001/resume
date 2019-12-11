@@ -9,6 +9,11 @@ const api = {
     return axios.get('/api/register', { params: {
       ...params
     } })
+  },
+  login (params) {
+    return axios.get('/api/login', { params: {
+      ...params
+    } })
   }
 }
 

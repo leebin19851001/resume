@@ -49,15 +49,17 @@ export default {
           console.log(reason)
         })
     },
-    rigster () {
-      api.registerUser({ userName: this.userName, email: this.email, password: md5.hex_md5(this.password) })
+    login () {
+      api.login({ userName: this.userName, password: md5.hex_md5(this.password) })
         .then(res => {
           this.isShow = true
           this.showMsg = res.data.msg
+          this.$router.push({ path: '/' })
           setTimeout(() => {
             this.isShow = false
           }, 3000)
         }, reason => {
+          console.log(reason)
           this.isShow = true
           this.showMsg = reason.data.msg
           setTimeout(() => {
@@ -89,7 +91,7 @@ export default {
       .register-right {
         position: relative;
         width: 40%;
-        height: 100%;
+        height: 80%;
         background-image: url('../assets/img/bg.jpg');
         background-repeat: no-repeat;
         text-align: center;
@@ -119,7 +121,7 @@ export default {
       .register-left {
         position: relative;
         width: 60%;
-        height: 100%;
+        height: 80%;
         box-sizing: border-box;
         border-top:1px solid black;
         border-bottom:1px solid black;

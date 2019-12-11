@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="img-container">
-          <MySlider :list='srcList' />
+          <MySlider :list='srcList' :len='srcList.length' />
         </div>
       </div>
     </div>

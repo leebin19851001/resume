@@ -12,7 +12,7 @@ const routes = [
     component: DefaultPage,
     children: [
       {
-        path: '/index',
+        path: 'index',
         name: 'index',
         component: Index
       }

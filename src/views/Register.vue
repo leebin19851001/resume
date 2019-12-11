@@ -51,20 +51,38 @@ export default {
         })
     },
     rigster () {
+      let flag = this.verify()
+      if (!flag) {
+        return undefined
+      }
       api.registerUser({ userName: this.userName, email: this.email, password: md5.hex_md5(this.password) })
         .then(res => {
-          this.isShow = true
-          this.showMsg = res.data.msg
-          setTimeout(() => {
-            this.isShow = false
-          }, 3000)
+          this.showMessage(res.data.msg)
         }, reason => {
-          this.isShow = true
-          this.showMsg = reason.data.msg
-          setTimeout(() => {
-            this.isShow = false
-          }, 3000)
+          this.showMessage(reason.data.msg)
         })
+    },
+    showMessage (msg) {
+      this.isShow = true
+      this.showMsg = msg
+      setTimeout(() => {
+        this.isShow = false
+      }, 3000)
+    },
+    verify () {
+      if (this.userName.length === 0 || this.userName === '') {
+        this.showMessage('用户名不能为空')
+        return false
+      }
+      if (this.password.length === 0 || this.password === '') {
+        this.showMessage('密码不能为空')
+        return false
+      }
+      if (this.email.length === 0 || this.email === '') {
+        this.showMessage('邮箱不能为空')
+        return false
+      }
+      return true
     }
   }
 }
@@ -90,7 +108,7 @@ export default {
       .register-left {
         position: relative;
         width: 40%;
-        height: 100%;
+        height: 80%;
         background-image: url('../assets/img/bg.jpg');
         background-repeat: no-repeat;
         text-align: center;
@@ -120,7 +138,7 @@ export default {
       .register-right {
         position: relative;
         width: 60%;
-        height: 100%;
+        height: 80%;
         box-sizing: border-box;
         border-top:1px solid black;
         border-bottom:1px solid black;
