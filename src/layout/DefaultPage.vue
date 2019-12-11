@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div id="nav-container" class="nav-container">
       <MyNav :list="list" />
     </div>
@@ -36,10 +36,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .nav-container {
-    height: 60px;
-    width: 100%;
-    padding: 0 auto;
-    line-height: 60px;
+  .container {
+    height: 100%;
+    .nav-container {
+      height: 60px;
+      width: 100%;
+      padding: 0 auto;
+      line-height: 60px;
+    }
   }
 </style>

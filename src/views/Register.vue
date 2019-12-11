@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="login-container">
       <div class="msg-container" v-show="isShow">
         <Message :msg="showMsg"/>
       </div>
@@ -7,7 +7,7 @@
         <div class="register-left">
           <p>已有账号？</p>
           <p>有账号就登录吧，好久不见</p>
-          <p>登录</p>
+          <router-link tag="p" to="/login">登录</router-link>
         </div>
         <div class="register-right">
           <p>立即注册</p>
@@ -71,93 +71,97 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .msg-container {
-    position: fixed;
-    top: 10px;
-    width: 100%;
-    text-align: center;
-  }
-  .register {
-    position: relative;
-    box-sizing: border-box;
+  .login-container{
     width: 100%;
     height: 100%;
-    padding: 80px 500px;
-    display: flex;
-    .register-left {
-      position: relative;
-      width: 40%;
-      height: 600px;
-      background-image: url('../assets/img/bg.jpg');
-      background-repeat: no-repeat;
+    .msg-container {
+      position: fixed;
+      top: 10px;
+      width: 100%;
       text-align: center;
-      p {
-        position: relative;
-        margin:0 auto;
-        color: #fff;
-      }
-      p:nth-child(1){
-        font-size: 28px;
-        top: 30px;
-      }
-      p:nth-child(2){
-        top: 50px;
-      }
-      p:nth-child(3){
-        top: 350px;
-        opacity: 0.8;
-        width: 100px;
-        border-radius: 10px;
-        border:2px solid snow;
-        padding: 2px;
-        font-weight: 700;
-        cursor: pointer;
-      }
     }
-    .register-right {
+    .register {
       position: relative;
-      width: 60%;
-      height: 600px;
       box-sizing: border-box;
-      border-top:1px solid black;
-      border-bottom:1px solid black;
-      border-right:1px solid black;
-      text-align: center;
-      p{
+      width: 100%;
+      height: 80%;
+      padding: 50px 30% 0px;
+      display: flex;
+      .register-left {
         position: relative;
-        height: 20px;
+        width: 40%;
+        height: 100%;
+        background-image: url('../assets/img/bg.jpg');
+        background-repeat: no-repeat;
+        text-align: center;
+        p {
+          position: relative;
+          margin:0 auto;
+          color: #fff;
+        }
+        p:nth-child(1){
+          font-size: 28px;
+          top: 30px;
+        }
+        p:nth-child(2){
+          top: 50px;
+        }
+        p:nth-child(3){
+          top: 300px;
+          opacity: 0.8;
+          width: 100px;
+          border-radius: 10px;
+          border:2px solid snow;
+          padding: 2px;
+          font-weight: 700;
+          cursor: pointer;
+        }
       }
-      p:nth-child(1) {
-        font-size: 20px;
-        top: 30px;
-      }
-      p:nth-child(2) {
-        top: 50px;
-      }
-      p:nth-child(3) {
-        top: 60px;
-      }
-      p:nth-child(4) {
-        top: 70px;
-      }
-      p:nth-child(5) {
-        top: 80px;
-      }
-      p:nth-child(6) {
-        top: 90px;
-      }
-      p:nth-child(7) {
-        top: 100px;
-      }
-      p:nth-child(8) {
-        top: 200px;
-        width: 100px;
-        margin: 0 auto;
-        padding: 4px 5px;
-        background: rgb(211, 176, 122);
-        border-radius: 10px;
-        font-weight: 700;
-        cursor: pointer;
+      .register-right {
+        position: relative;
+        width: 60%;
+        height: 100%;
+        box-sizing: border-box;
+        border-top:1px solid black;
+        border-bottom:1px solid black;
+        border-right:1px solid black;
+        text-align: center;
+        p{
+          position: relative;
+          height: 20px;
+        }
+        p:nth-child(1) {
+          font-size: 20px;
+          top: 30px;
+        }
+        p:nth-child(2) {
+          top: 50px;
+        }
+        p:nth-child(3) {
+          top: 60px;
+        }
+        p:nth-child(4) {
+          top: 70px;
+        }
+        p:nth-child(5) {
+          top: 80px;
+        }
+        p:nth-child(6) {
+          top: 90px;
+        }
+        p:nth-child(7) {
+          top: 100px;
+        }
+        p:nth-child(8) {
+          top: 200px;
+          width: 100px;
+          margin: 0 auto;
+          padding: 4px 5px;
+          background: rgb(211, 176, 122);
+          border-radius: 10px;
+          font-weight: 700;
+          cursor: pointer;
+        }
       }
     }
   }
