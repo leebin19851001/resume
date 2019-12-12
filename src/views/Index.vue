@@ -23,13 +23,16 @@
         </div>
       </div>
     </div>
-    <div class='before'></div>
+    <div class='before'>
+      <Advance />
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import MySlider from '../components/common/MySlider.vue'
+import Advance from '../components/index/Advance'
 export default {
   name: 'home',
   data () {
@@ -65,113 +68,127 @@ export default {
     }
   },
   components: {
-    MySlider
+    MySlider,
+    Advance
   }
 }
 </script>
-
 <style lang='scss' scoped>
 .home{
   padding-top: 60px;
+  height: 100%;
   background: linear-gradient(to right, #665ce7, #665ccb);
   .after {
   height: 640px;
   width: 100%;
-  .after-container {
-    position: relative;
-    height: 100%;
-    width: 1240px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    .after-contniner-left {
-      width: 60%;
+    .after-container {
+      position: relative;
       height: 100%;
-      .inner-text1 {
-        z-index: 20;
-        position: absolute;
-        top: 100px;
-        left: 0;
-        h1 {
-          color: #fff;
-          font-size: 38px;
-          height: 43px;
-          margin-bottom: 20px;
-          font-weight: 300;
-          font-family: 'microsoft yahei';
-        }
-        h2 {
+      width: 1240px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      .after-contniner-left {
+        width: 60%;
+        height: 100%;
+        .inner-text1 {
+          z-index: 20;
           position: absolute;
-          color: #fff;
-          font-size: 18px;
-          height: 23px;
-          margin-bottom: 20px;
-          font-weight: 100;
+          top: 100px;
           left: 0;
-        }
-      }
-      .inner-text2 {
-        z-index: 20;
-        position: absolute;
-        top: 260px;
-        left: 0;
-        width: 400px;
-        height: 50px;
-        display: flex;
-        justify-content: space-between;
-        div {
-          flex-grow: 1;
-          line-height: 50px;
-          a{
-            display: inline-block;
-            height: 100%;
-            width: 90%;
-            background: #008899;
+          h1 {
+            color: #fff;
+            font-size: 38px;
+            height: 43px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            font-family: 'microsoft yahei';
+          }
+          h2 {
+            position: absolute;
+            color: #fff;
+            font-size: 18px;
+            height: 23px;
+            margin-bottom: 20px;
+            font-weight: 100;
+            left: 0;
           }
         }
-      }
-      .inner-text3 {
-        z-index: 20;
-        position: absolute;
-        top: 400px;
-        left: 0;
-        height: 28px;
-        line-height: 28px;
-        padding: 0 3px;
-        &:focus-within {
-          border: 1px solid #fff;
-          border-radius: 14px;
-        }
-        .search-word {
-          float: left;
-          width: 300px;
-          height: 26px;
-          line-height: 26px;
-          background-color: transparent;
-          color: #fff;
-          border:0;/*去掉未选中状态边框*/
-          border-bottom: 1px solid snow;
-          outline:none;/*去掉选中状态边框*/
-          background-color:rgba(0,0,0,0);/*透明背景*/
-          &:focus {
-            border: 0;
+        .inner-text2 {
+          z-index: 20;
+          position: absolute;
+          top: 260px;
+          left: 0;
+          width: 400px;
+          height: 50px;
+          display: flex;
+          justify-content: space-between;
+          div {
+            flex-grow: 1;
+            line-height: 50px;
+            a{
+              display: inline-block;
+              height: 100%;
+              width: 90%;
+              background: #008899;
+            }
           }
         }
-        .search-button {
-          float: right;
+        .inner-text3 {
+          z-index: 20;
+          position: absolute;
+          top: 400px;
+          left: 0;
           height: 28px;
-          border-radius: 5px;
-          background: transparent;
-          border: 0;
-          outline:none;
+          line-height: 28px;
+          padding: 0 3px;
+          &:focus-within {
+            border: 1px solid #fff;
+            border-radius: 14px;
+          }
+          .search-word {
+            float: left;
+            width: 300px;
+            height: 26px;
+            line-height: 26px;
+            background-color: transparent;
+            color: #fff;
+            border:0;/*去掉未选中状态边框*/
+            border-bottom: 1px solid snow;
+            outline:none;/*去掉选中状态边框*/
+            background-color:rgba(0,0,0,0);/*透明背景*/
+            &:focus {
+              border: 0;
+            }
+          }
+          .search-button {
+            float: right;
+            height: 28px;
+            border-radius: 5px;
+            background: transparent;
+            border: 0;
+            outline:none;
+          }
         }
       }
-    }
-    .img-container {
-      position: absolute;
-      right: 0;
-      bottom: 0;
+      .img-container {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
     }
   }
-}
+  .before {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+    width: 100%;
+    bottom: 0px;
+    div {
+      flex-grow: 1;
+      background: rgba($color: #000000, $alpha: 0.5);
+      line-height: 150px;
+    }
+  }
 }
 </style>

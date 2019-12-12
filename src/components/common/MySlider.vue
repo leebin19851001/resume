@@ -22,7 +22,7 @@ export default {
       }
       this.showImgIndex++
       console.log(this.showImgIndex)
-    }, 2000)
+    }, 3000)
   }
 }
 </script>

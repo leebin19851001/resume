@@ -41,6 +41,9 @@ export default {
     padding: 0 50px;
     box-sizing: border-box;
     .my-nav{
+      position: absolute;
+      margin-left: 50px;
+      height: 60px;
       li {
         float: left;
         margin-left: 20px;
@@ -56,10 +59,10 @@ export default {
 
     .my-login {
       position: absolute;
-      right: 10px;
+      right: 50px;
       li {
         float: left;
-        margin-left: 20px;
+        margin-right: 20px;
         a {
           font-size: 18px;
           color: #fff;
