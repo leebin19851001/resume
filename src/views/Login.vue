@@ -22,7 +22,6 @@
   </div>
 </template>
 <script>
-import api from '../api/index'
 import md5 from '../utils/md5'
 import Message from '../components/common/Message'
 export default {
@@ -39,33 +38,14 @@ export default {
     }
   },
   methods: {
-    getData () {
-      api.queryUserInfoByUserId({ userId: 'zhagnsan' })
-        .then(res => {
-          this.userName = res.data.data[0]['user_name']
-          this.email = res.data.data[0]['email']
-          this.password = res.data.data[0]['password']
-        }, reason => {
-          console.log(reason)
-        })
-    },
-    login () {
-      api.login({ userName: this.userName, password: md5.hex_md5(this.password) })
-        .then(res => {
-          this.isShow = true
-          this.showMsg = res.data.msg
-          this.$router.push({ path: '/' })
-          setTimeout(() => {
-            this.isShow = false
-          }, 3000)
-        }, reason => {
-          console.log(reason)
-          this.isShow = true
-          this.showMsg = reason.data.msg
-          setTimeout(() => {
-            this.isShow = false
-          }, 3000)
-        })
+    async login () {
+      const result = await this.$store.dispatch('loginStore/login', { userName: this.userName, password: md5.hex_md5(this.password) })
+      console.log(result)
+      if (result) {
+        this.$router.push('/')
+      } else {
+        alert('账号错误')
+      }
     }
   }
 }

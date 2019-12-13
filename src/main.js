@@ -5,6 +5,8 @@ import store from './store'
 import './assets/css/reset.css'
 Vue.config.productionTip = false
 
+store.dispatch('loginStore/asyncUser')
+
 new Vue({
   router,
   store,
