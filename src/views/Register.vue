@@ -125,7 +125,7 @@ export default {
           top: 50px;
         }
         p:nth-child(3){
-          top: 300px;
+          top: 250px;
           opacity: 0.8;
           width: 100px;
           border-radius: 10px;
@@ -171,7 +171,7 @@ export default {
           top: 100px;
         }
         p:nth-child(8) {
-          top: 200px;
+          top: 170px;
           width: 100px;
           margin: 0 auto;
           padding: 4px 5px;

@@ -17,6 +17,19 @@
 <script>
 export default {
   props: ['list'],
+  mounted () {
+    const userStr = localStorage.getItem('loginUser')
+    if (userStr) {
+      const userObj = JSON.parse(userStr)
+      console.log(userObj)
+      this.loginList = [{
+        name: userObj.user_name
+      }, {
+        name: '退出登录',
+        link: '/logout'
+      }]
+    }
+  },
   data () {
     return {
       loginList: [{
