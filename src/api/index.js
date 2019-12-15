@@ -14,6 +14,19 @@ const api = {
     return axios.get('/api/login', { params: {
       ...params
     } })
+  },
+  getSloganAll () {
+    return axios.get('/api/getSloganAll')
+  },
+  addSlogan (params) {
+    return axios.get('/api/addSlogan', { params: {
+      ...params
+    } })
+  },
+  getSloganByLimit (params) {
+    return axios.get('/api/getSloganByLimit', { params: {
+      ...params
+    } })
   }
 }
 

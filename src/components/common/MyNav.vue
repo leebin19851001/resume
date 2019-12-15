@@ -6,9 +6,20 @@
       </li>
     </ul>
 
-    <ul class="my-login">
-      <li v-for="(item, index) in loginList" :key="index">
-        <router-link tag="a"  :to="item.link">{{item.name}}</router-link>
+    <ul class="my-login" v-if="isLogin">
+      <li>
+        <a >{{ loginUser.user_name }}</a>
+      </li>
+      <li>
+        <a @click="logOut">退出登陆</a>
+      </li>
+    </ul>
+    <ul class="my-login" v-else>
+      <li>
+        <router-link tag="a" to="/login">登陆</router-link>
+      </li>
+      <li>
+        <router-link tag="a" to="/register">注册</router-link>
       </li>
     </ul>
   </div>
@@ -17,28 +28,18 @@
 <script>
 export default {
   props: ['list'],
-  mounted () {
-    const userStr = localStorage.getItem('loginUser')
-    if (userStr) {
-      const userObj = JSON.parse(userStr)
-      console.log(userObj)
-      this.loginList = [{
-        name: userObj.user_name
-      }, {
-        name: '退出登录',
-        link: '/logout'
-      }]
+  methods: {
+    logOut () {
+      this.$store.dispatch('loginStore/logOut', {})
+      this.$router.push('/login')
     }
   },
-  data () {
-    return {
-      loginList: [{
-        name: '登陆',
-        link: '/login'
-      }, {
-        name: '注册',
-        link: '/register'
-      }]
+  computed: {
+    loginUser () {
+      return this.$store.state.loginStore.user
+    },
+    isLogin () {
+      return this.$store.state.loginStore.isLogin
     }
   }
 }
@@ -69,7 +70,6 @@ export default {
         }
       }
     }
-
     .my-login {
       position: absolute;
       right: 50px;

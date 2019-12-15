@@ -1,17 +1,28 @@
 <template>
-  <div class="ad-container">
-    <p>{{ title }}</p>
-    <p>{{ context }}</p>
+  <div class="myad-container">
+    <AdvanceItem v-for="(item, index) in dataList" :key="index" :item="item"/>
   </div>
 </template>
 
 <script>
+import AdvanceItem from './AdvanceItem'
 export default {
-  data () {
-    return {
-      title: 'adfa',
-      context: 'ccff分身乏术的发丝地方'
-    }
+  props: ['dataList'],
+  components: {
+    AdvanceItem
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .myad-container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    background: rgba($color: #000000, $alpha: 0.3);
+    div {
+      flex-grow: 1;
+    }
+  }
+</style>

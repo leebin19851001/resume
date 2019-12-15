@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div id="nav-container" class="nav-container">
+    <div id="myNav-container" class="myNav-container">
       <MyNav :list="list" />
     </div>
     <router-view/>
@@ -38,7 +38,9 @@ export default {
 <style lang="scss" scoped>
   .container {
     height: 100%;
-    .nav-container {
+    .myNav-container {
+      position: fixed;
+      top: 0;
       height: 60px;
       width: 100%;
       padding: 0 auto;

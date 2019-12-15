@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="resume-container">
     简历页面
   </div>
 </template>
@@ -15,5 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .resume-container {
+    padding-top: 60px;
+  }
 </style>

@@ -8,8 +8,8 @@
             <h2>备受好评的求职利器，写简历就上五百丁</h2>
           </div>
           <div class="inner-text2">
-            <div class="left"><a href="">left</a></div>
-            <div class="right"><a href="">right</a></div>
+            <div class="left"><a href="">免费制作简历</a></div>
+            <div class="right"><a href="">更多功能</a></div>
           </div>
           <div class="inner-text3">
             <form id='search_form' action='/search/' method='get'>
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class='before'>
-      <Advance />
+      <Advance :dataList='dataList'/>
     </div>
   </div>
 </template>
@@ -33,6 +33,7 @@
 // @ is an alias to /src
 import MySlider from '../components/common/MySlider.vue'
 import Advance from '../components/index/Advance'
+import api from '../api/index'
 export default {
   name: 'home',
   data () {
@@ -64,12 +65,25 @@ export default {
           src:
             'https://static.500d.me/resources/500d/index/images/index_banner4.png'
         }
-      ]
+      ],
+      dataList: []
     }
   },
   components: {
     MySlider,
     Advance
+  },
+  mounted () {
+    this.getSlogan()
+  },
+  methods: {
+    getSlogan () {
+      api.getSloganByLimit({ num: 4 }).then(res => {
+        this.dataList = res.data.data
+      }).catch(err => {
+        console(err)
+      })
+    }
   }
 }
 </script>
@@ -79,8 +93,8 @@ export default {
   height: 100%;
   background: linear-gradient(to right, #665ce7, #665ccb);
   .after {
-  height: 640px;
-  width: 100%;
+    height: 738px;
+    width: 100%;
     .after-container {
       position: relative;
       height: 100%;
@@ -178,17 +192,10 @@ export default {
     }
   }
   .before {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
+    position: relative;
     height: 150px;
     width: 100%;
     bottom: 0px;
-    div {
-      flex-grow: 1;
-      background: rgba($color: #000000, $alpha: 0.5);
-      line-height: 150px;
-    }
   }
 }
 </style>

@@ -21,7 +21,6 @@ export default {
         this.showImgIndex = -1
       }
       this.showImgIndex++
-      console.log(this.showImgIndex)
     }, 3000)
   }
 }
