@@ -75,6 +75,8 @@ export default {
         background-image: url('../assets/img/bg.jpg');
         background-repeat: no-repeat;
         text-align: center;
+        min-height: 340px;
+        min-width: 200px;
         p {
           position: relative;
           margin:0 auto;
@@ -107,6 +109,8 @@ export default {
         border-bottom:1px solid black;
         border-left:1px solid black;
         text-align: center;
+        min-height: 340px;
+        min-width: 200px;
         p{
           position: relative;
           height: 20px;
