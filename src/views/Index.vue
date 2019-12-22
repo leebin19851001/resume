@@ -91,9 +91,10 @@ export default {
 .home{
   padding-top: 60px;
   height: 100%;
+  box-sizing: border-box;
   background: linear-gradient(to right, #665ce7, #665ccb);
   .after {
-    height: 738px;
+    height: 658px;
     width: 100%;
     .after-container {
       position: relative;
@@ -192,10 +193,10 @@ export default {
     }
   }
   .before {
-    position: relative;
-    height: 150px;
+    position: absolute;
     width: 100%;
     bottom: 0px;
+    height: 150px;
   }
 }
 </style>

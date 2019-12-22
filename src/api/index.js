@@ -27,6 +27,16 @@ const api = {
     return axios.get('/api/getSloganByLimit', { params: {
       ...params
     } })
+  },
+  deleteSloganById (params) {
+    return axios.get('/api/deleteSloganById', { params: {
+      ...params
+    } })
+  },
+  updateSlogan (params) {
+    return axios.get('/api/updateSlogan', { params: {
+      ...params
+    } })
   }
 }
 
